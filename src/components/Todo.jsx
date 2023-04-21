@@ -3,8 +3,8 @@ import {useDispatch} from "react-redux"
 import TodoItem from "./TodoItem";
 import { addTodo } from "../action";
 const Todo = () =>{
-    const [inputData,setInputData] = useState("")
-    const [inputType,setInputType] = useState("")
+    const [newItem,setNewItem] = useState("")
+    const [newType,setNewType] = useState("")
     const dispatch = useDispatch()
     return(
         <div className="todo">
@@ -15,18 +15,18 @@ const Todo = () =>{
                         <h1>Todo List</h1>
                         <input 
                             type="text"
-                            value={inputData}
-                            onChange={(event)=>setInputData(event.target.value)}
+                            value={newItem}
+                            onChange={(event)=>setNewItem(event.target.value)}
                         /> 
                         <br />
-                        <select value={inputType} onChange={(event) => setInputType(event.target.value)}>
+                        <select value={newType} onChange={(event) => setNewType(event.target.value)}>
                             <option value="">---Выберите тип---</option>
                             <option value="events">Мероприятие</option>
                             <option value="reminder">Напоминание</option>
                             <option value="task">Задача</option>
                         </select>
                         <br />
-                        <button onClick={() => dispatch(addTodo(inputData,inputType),setInputData(""),setInputType(""))}>Добавить</button>
+                        <button onClick={() => dispatch(addTodo(newItem,newType),setNewItem(""),setNewType(""))}>Добавить</button>
                         <br />
                         <TodoItem  />
                     </div>
